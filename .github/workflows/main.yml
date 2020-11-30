@@ -12,5 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish
-      - name: Run a one-line script
         run: ./publish.sh
