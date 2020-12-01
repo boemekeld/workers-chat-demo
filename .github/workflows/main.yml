@@ -16,7 +16,7 @@ jobs:
           ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           AUTH_TOKEN: ${{ secrets.CF_API_TOKEN }}
           SCRIPT_NAME: "edge-chat-demo"
-        working-directory: teste
+        working-directory: playground/serverless
         run: |
           set -euo pipefail
 
