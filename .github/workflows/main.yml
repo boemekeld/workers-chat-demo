@@ -15,7 +15,7 @@ jobs:
         env:
           ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           AUTH_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          SCRIPT_NAME: "chat.mjs"
+          SCRIPT_NAME: "edge-chat-demo"
         run: |
           set -euo pipefail
 
@@ -32,8 +32,6 @@ jobs:
           ACCOUNT_ID=$ACCOUNT_ID
           AUTH_TOKEN=$AUTH_TOKEN
           SCRIPT_NAME=$SCRIPT_NAME
-
-          echo $SCRIPT_NAME
 
           # curl_api performs a curl command passing the appropriate authorization headers, and parses the
           # JSON response for errors. In case of errors, exit. Otherwise, write just the result part to
