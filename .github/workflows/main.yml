@@ -29,13 +29,11 @@ jobs:
             exit 1
           fi
 
-          echo "AKI1"
-          echo ACCOUNT_ID
-          echo "AKI2"
           ACCOUNT_ID=$ACCOUNT_ID
-          echo "AKI3"
           AUTH_TOKEN=$AUTH_TOKEN
           SCRIPT_NAME=$SCRIPT_NAME
+
+          echo $SCRIPT_NAME
 
           # curl_api performs a curl command passing the appropriate authorization headers, and parses the
           # JSON response for errors. In case of errors, exit. Otherwise, write just the result part to
