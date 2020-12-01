@@ -12,6 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish
+        env:
+          ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          AUTH_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          SCRIPT_NAME: "chat.mjs"
         run: |
           set -euo pipefail
 
@@ -25,28 +29,13 @@ jobs:
             exit 1
           fi
 
-          # If credentials.conf doesn't exist, prompt for the values and generate it.
-          if [ -e credentials.conf ]; then
-            source credentials.conf
-          else
-            echo "Please create a Cloudflare API Token with Workers Scripts Edit permission on your account (can be created using the Edit Cloudflare Workers API Token template)."
-            echo -n "API Token: "
-            read AUTH_TOKEN
-            echo -n "Cloudflare account ID (32 hex digits, found on the right sidebar of the Workers dashboard): "
-            read ACCOUNT_ID
-
-            SCRIPT_NAME=edge-chat-demo
-
-            cat > credentials.conf << __EOF__
+          echo "AKI1"
+          echo ACCOUNT_ID
+          echo "AKI2"
           ACCOUNT_ID=$ACCOUNT_ID
+          echo "AKI3"
           AUTH_TOKEN=$AUTH_TOKEN
           SCRIPT_NAME=$SCRIPT_NAME
-          __EOF__
-
-            chmod 600 credentials.conf
-
-            echo "Wrote credentials.conf with these values."
-          fi
 
           # curl_api performs a curl command passing the appropriate authorization headers, and parses the
           # JSON response for errors. In case of errors, exit. Otherwise, write just the result part to
