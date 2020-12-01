@@ -109,9 +109,7 @@ jobs:
           if [ ! -e metadata.json ]; then
             # If metadata.json doesn't exist we assume this is first-time setup and we need to create the
             # namespaces.
-            echo "AKI 1"
             upload_bootstrap_script
-            echo "AKI 2"
             ROOMS_ID=$(upsert_namespace ChatRoom)
             LIMITERS_ID=$(upsert_namespace RateLimiter)
 
@@ -133,9 +131,8 @@ jobs:
           }
           __EOF__
           fi
-          echo "AKI 3"
+          
           upload_script
-          echo "AKI 4"
 
           echo "App uploaded to your account under the name: $SCRIPT_NAME"
           echo "You may deploy it to a specific host in the Cloudflare Dashboard."
